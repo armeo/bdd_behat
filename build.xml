@@ -1,0 +1,57 @@
+<project name="behat" default="run" basedir=".">
+
+  <property name="selenium.standalone" value="selenium-server-standalone-2.35.0.jar"/>
+
+  <target name="start-selenium-server">
+    <echo message="Starting Selenium RC server (runs as a separate process)" />
+    <java dir="${basedir}" jar="${selenium.standalone}" fork="true" failonerror="true">
+      <!-- Enable logging for the Selenium server -->
+      <arg line="-log selenium.log -browserSideLog"/>
+    </java>
+  </target>
+
+  <target name="stop-selenium-server">
+    <echo message="Stopping Selenium RC server" />
+    <get taskname="selenium-shutdown"
+      src="http://localhost:4444/seleniumum-server/driver/?cmd=shutDownSeleniumServer"
+      dest="result.txt" ignoreerrors="true" />
+  </target>
+
+  <target name="run">
+    <delete dir="${basedir}/report" />
+    <mkdir dir="${basedir}/report"/>
+
+    <!-- Start the Selenium RC server -->
+    <antcall target="start-selenium-server" />
+
+    <echo message="Running Selenium Tests." />
+
+    <parallel>
+      <antcall target="chrome"></antcall>
+      <antcall target="safari"></antcall>
+      <antcall target="firefox"></antcall>
+    </parallel>
+
+    <!-- Stop the Selenium RC server -->
+    <antcall target="stop-selenium-server" />
+  </target>
+
+  <target name="chrome">
+    <exec dir="${basedir}" executable="php" failonerror="true">
+      <arg line= "bin/behat -f html --out report/chrome.html -p chrome"/>
+    </exec>
+  </target>
+
+  <target name="safari">
+    <exec dir="${basedir}" executable="php" failonerror="true">
+      <arg line= "bin/behat -f html --out report/safari.html -p safari"/>
+    </exec>
+  </target>
+
+  <target name="firefox">
+    <exec dir="${basedir}" executable="php" failonerror="true">
+      <arg line= "bin/behat -f html --out report/firefox.html -p firefox"/>
+    </exec>
+  </target>
+
+</project>
