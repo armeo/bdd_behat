@@ -1,4 +1,7 @@
-Feature: Access to dev.bypronto.com
+Feature: Blog Search
+  As a bloger
+  I want to search post in blog page
+  So that i can check my post is exist.
 
   Background:
     Given I am on "/blog"
