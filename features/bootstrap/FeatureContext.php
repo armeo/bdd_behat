@@ -1,12 +1,12 @@
 <?php
 
-class FeatureContext extends Behat\MinkExtension\Context\MinkContext{
+class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
 
   /**
    * @Given /^I wait for result$/
    */
-  public function iWaitForResult(){
-    sleep(5);
+  public function iWaitForResult() {
+    sleep( 5 );
   }
 
 }

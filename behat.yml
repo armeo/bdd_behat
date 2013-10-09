@@ -3,7 +3,7 @@ chrome:
     class:  'FeatureContext'
   extensions:
     Behat\MinkExtension\Extension:
-      base_url:  'http://saucelabs.com/'
+      base_url:  'http://armeo.dev.bypronto.com/'
       javascript_session:  'selenium'
       browser_name: googlechrome
       goutte:              ~
@@ -14,7 +14,7 @@ safari:
     class:  'FeatureContext'
   extensions:
     Behat\MinkExtension\Extension:
-      base_url:  'http://saucelabs.com/'
+      base_url:  'http://armeo.dev.bypronto.com/'
       javascript_session:  'selenium2'
       browser_name: safari
       goutte:              ~
@@ -25,9 +25,9 @@ firefox:
     class:  'FeatureContext'
   extensions:
     Behat\MinkExtension\Extension:
-      base_url:  'http://saucelabs.com/'
+      base_url:  'http://armeo.dev.bypronto.com/'
       javascript_session:  'selenium2'
       browser_name: firefox
       goutte:              ~
       selenium2:
-    
+

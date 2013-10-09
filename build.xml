@@ -2,7 +2,7 @@
 
   <property name="selenium.standalone" value="selenium-server-standalone-2.35.0.jar"/>
 
-  <target name="start-selenium-server">
+  <target name="start-selenium">
     <echo message="Starting Selenium RC server (runs as a separate process)" />
     <java dir="${basedir}" jar="${selenium.standalone}" fork="true" failonerror="true">
       <!-- Enable logging for the Selenium server -->
@@ -10,7 +10,7 @@
     </java>
   </target>
 
-  <target name="stop-selenium-server">
+  <target name="stop-selenium">
     <echo message="Stopping Selenium RC server" />
     <get taskname="selenium-shutdown"
       src="http://localhost:4444/seleniumum-server/driver/?cmd=shutDownSeleniumServer"
@@ -22,7 +22,7 @@
     <mkdir dir="${basedir}/report"/>
 
     <!-- Start the Selenium RC server -->
-    <antcall target="start-selenium-server" />
+    <!--antcall target="start-selenium" /-->
 
     <echo message="Running Selenium Tests." />
 
@@ -33,7 +33,7 @@
     </parallel>
 
     <!-- Stop the Selenium RC server -->
-    <antcall target="stop-selenium-server" />
+    <!-- antcall target="stop-selenium" /-->
   </target>
 
   <target name="chrome">

@@ -3,3 +3,5 @@ bin/
 vendor/
 report/
 composer*
+*.log
+*.jar
